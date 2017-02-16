@@ -152,6 +152,7 @@ public class Polynomial {
         Polynomial result = new Polynomial(resultat);
         return result;
     }
+    //prova
 
     // Divideix el polinomi amb un altre. No modifica el polinomi actual (this). Genera un de nou
     // Torna el quocient i també el residu (ambdós polinomis)

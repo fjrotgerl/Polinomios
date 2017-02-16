@@ -140,30 +140,14 @@ public class Polynomial {
     //pene
     // Multiplica el polinomi amb un altre. No modifica el polinomi actual (this). Genera un de nou
     public Polynomial mult(Polynomial p2) {
-        float[] ar;
-        float[] ar2;
-        float[] resultat;
-        if (p2.cfs.length > this.cfs.length) {
-            ar = new float[p2.cfs.length];
-            ar2 = new float[p2.cfs.length];
-            resultat = new float[p2.cfs.length];
-        } else {
-            ar = new float[this.cfs.length];
-            ar2 = new float[this.cfs.length];
-            resultat = new float[this.cfs.length];
-        }
-        int o = ar.length-p2.cfs.length;
-        for (int j = 0; j < p2.cfs.length; j++) {
-            ar[o] = p2.cfs[j];
-            o++;
-        }
-        int o2 = ar2.length-this.cfs.length;
+        float[] resultat = new float[this.cfs.length+p2.cfs.length-1];
         for (int i = 0; i < this.cfs.length; i++) {
-            ar2[o2] = this.cfs[i];
-            o2++;
-        }
-        for (int i = 0; i < ar.length; i++) {
-            resultat[i] = ar2[i] * ar[i];
+            if (this.cfs[i] == 0) {
+                continue;
+            }
+            for (int j = 0; j < p2.cfs.length; j++) {
+                resultat[i+j] += this.cfs[i]*p2.cfs[j];
+            }
         }
         Polynomial result = new Polynomial(resultat);
         return result;
